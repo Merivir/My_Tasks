@@ -124,8 +124,6 @@ void merge(std::vector<int>& arr, int left, int mid, int right) {
 void mergeSort(std::vector<int>& arr, int left, int right) {
     if (left >= right) return;
 
-    std::cout << "Function called\n";
-
     int mid = (left + right) / 2;
     mergeSort(arr, left, mid);
     mergeSort(arr, mid + 1, right);
@@ -133,7 +131,7 @@ void mergeSort(std::vector<int>& arr, int left, int right) {
 }
 
 void mergeSort(std::vector<int>& arr) {
-    mergeSort(arr, 0, arr.size());
+    mergeSort(arr, 0, arr.size() - 1);
 }
 
 int partition(std::vector<int>& arr, int low, int high) {
@@ -161,7 +159,7 @@ void quickSort(std::vector<int>& arr, int low, int high) {
 }
 
 void quickSort(std::vector<int>& arr) {
-    quickSort(arr, 0, arr.size());
+    quickSort(arr, 0, arr.size() - 1);
 }
 
 void heapify(std::vector<int>& arr, int n, int i) {
@@ -233,7 +231,8 @@ void doneOperation(std::vector<int>& vectorSorted, int strategy) {
 }
 
 int main() {
-    std::string fileName = enterFileName();
+    //std::string fileName = enterFileName();
+    std::string fileName = "vector.txt";
     int strategy = enterStrategy();
     
     std::vector<int> vectorSort;
@@ -245,6 +244,8 @@ int main() {
 
     doneOperation(vectorSort, strategy);
     fileWriter(fileName, vectorSort);
+
+    std::cout << std::endl;
 
     return 0;
 }
